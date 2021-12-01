@@ -1,0 +1,19 @@
+*{
+    font-size: 30px;
+}
+
+h3{
+    color: blue;
+}
+
+.content{
+    text-align:center;
+}
+
+#message{
+    width:500px
+}
+
+#submit, p{
+    color: red;
+}
