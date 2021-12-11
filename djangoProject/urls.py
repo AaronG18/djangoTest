@@ -23,10 +23,12 @@ from django.conf import settings
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', index, name='index'),
+    # path('', index, name='index'),
     # points to index urls files
-    path('', include('index.urls')),
+    path('', include(('index.urls', 'index'), namespace='index')),
     # set up media dir url path
     re_path('media/(?P<path>.*)', serve,
             {'document_root': settings.MEDIA_ROOT}, name='media'),
+    # point to user - urls.py
+    path('user/',include(('user.urls', 'user'), namespace='user'))
 ]
