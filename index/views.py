@@ -4,11 +4,19 @@ from django.http import HttpResponse
 
 
 # Create your views here.
-def index(request, month):
-    value = 'This is test!'
-    print(value)
-    # return render(request, 'index.html')
-    return HttpResponse('this is variable outside urls scope: '+month)
+def mydate(request, year, month, day):
+    return HttpResponse(str(year)+'/'+str(month)+'/'+str(day))
+
+
+def index(request):
+    return render(request, 'index.html')
+
+
+# def index(request, month):
+#     value = 'This is test!'
+#     print(value)
+#     # return render(request, 'index.html')
+#     return HttpResponse('this is variable outside urls scope: '+month)
 
 #
 # def indexView(request):
@@ -17,9 +25,9 @@ def index(request, month):
 #     return render(request, 'index.html')
 
 
-def myvariable(request, year, month, day):
-    return HttpResponse(str(year)+'/'+str(month)+'/'+str(day))
+# def myvariable(request, year, month, day):
+#     return HttpResponse(str(year)+'/'+str(month)+'/'+str(day))
 
 
 def mydate(request, year, month, day):
-    return HttpResponse(str(year)+'/'+str(month)+'/'+str(day))
+    return HttpResponse(str(year) + '/' + str(month) + '/' + str(day))
