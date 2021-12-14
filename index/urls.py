@@ -1,4 +1,6 @@
 from django.urls import path, re_path
+from django.views.generic import RedirectView
+
 from . import views
 
 urlpatterns = [
@@ -9,5 +11,6 @@ urlpatterns = [
 
     # refine@page 57
     # re_path('(?P<year>[0-9]{4}).html', views.mydate, name='mydate'),
-    path('', views.index, name='index')
+    path('', views.index, name='index'),
+    path('TurnTo', RedirectView.as_view(url='/'), name='turnTo'),
 ]
