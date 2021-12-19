@@ -26,8 +26,11 @@ def index(request):
     # print(reverse('index:mydate', args=args))
     # print(reverse('index:mydate', kwargs=kwargs))
     # return HttpResponse(reverse('index:mydate', args=args))
-    print(reverse('index:turnTo'))
-    return redirect(reverse('index:mydate', args=[2019, 12, 12]))
+    # print(reverse('index:turnTo'))
+    # return redirect(reverse('index:mydate', args=[2019, 12, 12]))
+    title = {'key': 'Hello MyDjango'}
+    content = {'key': 'This is MyDjango'}
+    return render(request, 'index.html', locals())
 
 
 # def index(request, month):
