@@ -3,6 +3,8 @@ from django.contrib.contenttypes.models import ContentType
 from django.http import HttpResponse
 from django.shortcuts import reverse
 from django.urls import resolve
+from django.http import HttpResponseRedirect
+from django.http import HttpResponsePermanentRedirect
 
 
 # Create your views here.
@@ -28,10 +30,19 @@ def index(request):
     # return HttpResponse(reverse('index:mydate', args=args))
     # print(reverse('index:turnTo'))
     # return redirect(reverse('index:mydate', args=[2019, 12, 12]))
-    title = {'key': 'Hello MyDjango'}
-    content = {'key': 'This is MyDjango'}
-    return render(request, 'index.html', locals())
+    # title = {'key': 'Hello MyDjango'}
+    # content = {'key': 'This is MyDjango'}
+    # return render(request, 'index.html', locals())
+    return redirect('index:shop', permanent=True)
+    # set 302 redirect
+    # url = reverse('index:shop')
+    # return HttpResponseRedirect(url)
+    # set 301 redirect
+    # return HttpResponsePermanentRedirect(url)
 
+
+def shop(request):
+    return render(request, 'index.html')
 
 # def index(request, month):
 #     value = 'This is test!'

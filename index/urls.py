@@ -13,4 +13,5 @@ urlpatterns = [
     # re_path('(?P<year>[0-9]{4}).html', views.mydate, name='mydate'),
     path('', views.index, name='index'),
     path('TurnTo', RedirectView.as_view(url='/'), name='turnTo'),
+    path('shop', views.shop, name='shop'),
 ]
