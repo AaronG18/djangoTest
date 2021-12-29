@@ -34,3 +34,9 @@ urlpatterns = [
     path('', include('index.urls')),
     path('', include(('index.urls', 'index'), namespace='index')),
 ]
+
+# global 404
+handler404 = 'index.views.pag_not_found'
+
+# global 500
+handler500 = 'index.views.page_error'

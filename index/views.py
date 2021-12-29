@@ -5,6 +5,7 @@ from django.shortcuts import reverse
 from django.urls import resolve
 from django.http import HttpResponseRedirect
 from django.http import HttpResponsePermanentRedirect
+from django.http import Http404
 
 
 # Create your views here.
@@ -33,16 +34,22 @@ def index(request):
     # title = {'key': 'Hello MyDjango'}
     # content = {'key': 'This is MyDjango'}
     # return render(request, 'index.html', locals())
-    return redirect('index:shop', permanent=True)
+    # return redirect('index:shop', permanent=True)
     # set 302 redirect
     # url = reverse('index:shop')
     # return HttpResponseRedirect(url)
     # set 301 redirect
     # return HttpResponsePermanentRedirect(url)
+    # Request.GET is to acquire request info
+    if request.GET.get('error', ''):
+        raise Http404('page does not exist')
+    else:
+        return render(request, 'index.html')
 
 
 def shop(request):
     return render(request, 'index.html')
+
 
 # def index(request, month):
 #     value = 'This is test!'
@@ -63,3 +70,11 @@ def shop(request):
 
 # def mydate(request, year, month, day):
 #     return HttpResponse(str(year) + '/' + str(month) + '/' + str(day))
+def pag_not_found(request, exception):
+    # global 404 setting func
+    return render(request, '404.html', status=404)
+
+
+def page_error(request):
+    # global 500 setting func
+    return render(request, '500.html', status=500)
